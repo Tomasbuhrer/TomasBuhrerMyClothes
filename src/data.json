@@ -1,0 +1,5 @@
+[
+    { "id": 1, "name": "campera" ,"category":"accesory", "stock": 2 },
+    { "id": 2, "name": "remera","category":"use", "stock": 3 },
+    { "id": 3, "name": "short","category":"use", "stock": 4}
+]

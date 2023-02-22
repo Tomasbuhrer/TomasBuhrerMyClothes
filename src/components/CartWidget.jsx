@@ -5,7 +5,7 @@ import { AiOutlineShoppingCart } from 'react-icons/ai';
 
 function CartWidget() {
   return (
-    <div><AiOutlineShoppingCart/></div>
+    <div><AiOutlineShoppingCart/>2</div>
   )
 }
 
