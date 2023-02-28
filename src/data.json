@@ -1,5 +1,20 @@
 [
-    { "id": 1, "name": "campera" ,"category":"accesory", "stock": 2 },
-    { "id": 2, "name": "remera","category":"use", "stock": 3 },
-    { "id": 3, "name": "short","category":"use", "stock": 4}
+    { "id": 1,
+     "name": "campera" 
+     ,"description":"  Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam porro, necessitatibus perspiciatis iste, a incidunt hic voluptatum placeat impedit eius officiis repellendus consequuntur id iusto. Nobis blanditiis aperiam fugiat natus." 
+     ,"category":"Accesory", 
+     "stock": 2,
+     "price":100 },
+    { "id": 2,
+     "name": "remera"
+     ,"category":"Use", 
+     "description":"  Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam porro, necessitatibus perspiciatis iste, a incidunt hic voluptatum placeat impedit eius officiis repellendus consequuntur id iusto. Nobis blanditiis aperiam fugiat natus.",
+     "stock": 3,
+    "price":200 },
+    { "id": 3,
+     "name": "short"
+     ,"description":"  Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam porro, necessitatibus perspiciatis iste, a incidunt hic voluptatum placeat impedit eius officiis repellendus consequuntur id iusto. Nobis blanditiis aperiam fugiat natus.",
+     "category":"Use",
+      "stock": 4,
+    "price":300}
 ]

@@ -1,10 +1,12 @@
 import React from 'react'
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
-function Item({id,name, stock}) {
+
+function Item({id,name, stock, category}) {
+
   return (
     <>
     <div>
@@ -21,7 +23,12 @@ function Item({id,name, stock}) {
                   <Card.Text>
                    Stock: {stock}
                   </Card.Text>
-                  <Link to={`/item/${id}`}><Button variant="primary">Detail</Button></Link>
+                  <Card.Text>
+                    Category: {category}
+                  </Card.Text>
+                  <Button variant="primary">
+                  <Link to={`/item/${id}`}>Details</Link>
+                  </Button>
             </Card.Body>
             </Card>
         </div>

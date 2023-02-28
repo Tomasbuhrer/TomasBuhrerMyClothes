@@ -10,7 +10,7 @@ function ItemDetail({clothes}) {
     //renderizador
   return (
     <>
-    {clothesFilter.map((clothe)=> {
+    {clothesFilter.map((clothe)=> (
         <div key={clothe.id}>
         <Card style={{ width: '18rem' }}>
         <Card.Img variant="top" src="holder.js/100px180" />
@@ -19,13 +19,22 @@ function ItemDetail({clothes}) {
             <Card.Text>
             Some quick example text to build on the card title and make up the
             bulk of the card's content.
-            </Card.Text>            
+            </Card.Text>
+            <Card.Text>
+              Description:{clothe.description}
+              </Card.Text>     
+              <Card.Text>
+                Price:{clothe.price}
+              </Card.Text>
+              <Card.Text>
+                Stock:{clothe.stock}
+              </Card.Text>
             <Button variant="primary">Buy</Button>
         </Card.Body>
         </Card>
     </div>
 
-    })}
+    ))}
     </>
   );
 };

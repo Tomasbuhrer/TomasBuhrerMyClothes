@@ -6,16 +6,19 @@ function ItemList({clothes}) {
     <>
     
     {
-        clothes.map((clothe)=> {
-            return (<Item
+        clothes.map((clothe)=> (
+             (<Item
             key={clothe.id}
             id={clothe.id}
             name={clothe.name}
+            price={clothe.price}
+            description={clothe.description}
             stock={clothe.stock}
             category={clothe.category}
             />)
-        })
-    }
+        ))
+            }
+    
     
     </>
   )

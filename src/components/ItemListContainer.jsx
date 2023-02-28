@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom'
 function ItemListContainer() {
   const {category} = useParams();
 
- const getDatos = () => {
+ /* const getDatos = () => {
   return new Promise((resolve, reject) => {
     if(clothes.length === 0) {
       reject(new error("no hay datos"))
@@ -29,15 +29,15 @@ function ItemListContainer() {
  }
 
 
- fetchingData();
+ fetchingData(); */
 
- const catFilter = clothes.filter((clothe) => {clothe.category === category});
+ const catFilter = clothes.filter((clothe) => clothe.category === category);
 
   return (
     <>
      {category? <ItemList clothes={catFilter}/> : <ItemList clothes={clothes}/>}
     </>
-  )
-}
+  );
+};
 
 export default ItemListContainer;
