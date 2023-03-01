@@ -25,10 +25,10 @@ function NavBar() {
           <Nav className="me-auto">
            <NavDropdown title="categories">
             <NavDropdown.Item>
-              <Link to={`/category/${Accesory}`}>accesory</Link>
+              <Link to={`/category/Accesory`}>accesory</Link>
             </NavDropdown.Item>
             <NavDropdown.Item>
-              <Link to={`/category/${Use}`}>use</Link>
+              <Link to={`/category/Use`}>use</Link>
             </NavDropdown.Item>
            </NavDropdown>
           </Nav>
