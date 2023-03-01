@@ -7,7 +7,7 @@ function ItemList({clothes}) {
     
     {
         clothes.map((clothe)=> (
-             (<Item
+             <Item
             key={clothe.id}
             id={clothe.id}
             name={clothe.name}
@@ -15,7 +15,7 @@ function ItemList({clothes}) {
             description={clothe.description}
             stock={clothe.stock}
             category={clothe.category}
-            />)
+            />
         ))
             }
     

@@ -1,5 +1,5 @@
 import Container from 'react-bootstrap/Container';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
@@ -11,6 +11,7 @@ import CartWidget from './CartWidget';
 
 
 function NavBar() {
+
   return (
     <>
     
@@ -22,13 +23,13 @@ function NavBar() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-           <NavDropdown title="category">
-            <Link to={`/category/${"Accesory"}`}>
-            <NavDropdown.Item>accesory</NavDropdown.Item>
-            </Link>
-            <Link to={`/category/${"Use"}`}>
-            <NavDropdown.Item>use</NavDropdown.Item>
-            </Link>
+           <NavDropdown title="categories">
+            <NavDropdown.Item>
+              <Link to={`/category/${Accesory}`}>accesory</Link>
+            </NavDropdown.Item>
+            <NavDropdown.Item>
+              <Link to={`/category/${Use}`}>use</Link>
+            </NavDropdown.Item>
            </NavDropdown>
           </Nav>
         </Navbar.Collapse>

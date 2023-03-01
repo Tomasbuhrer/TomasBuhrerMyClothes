@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom'
 
 function ItemListContainer() {
   const {category} = useParams();
+  
 
  /* const getDatos = () => {
   return new Promise((resolve, reject) => {
@@ -32,11 +33,13 @@ function ItemListContainer() {
  fetchingData(); */
 
  const catFilter = clothes.filter((clothe) => clothe.category === category);
-
+ 
   return (
     <>
-     {category? <ItemList clothes={catFilter}/> : <ItemList clothes={clothes}/>}
+     {category ? <ItemList clothes={catFilter}/> : <ItemList clothes={clothes}/>}
+
     </>
+  
   );
 };
 
