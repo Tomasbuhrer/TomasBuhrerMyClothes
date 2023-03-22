@@ -1,12 +1,32 @@
 import React from 'react'
-import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { useParams } from 'react-router-dom';
+import { useEffect, useState } from "react";
+import { doc, getDoc, getFirestore } from "firebase/firestore";
+import ItemCount from './ItemCount';
 
 function ItemDetail({clothes}) {
+  console.log(clothes)
+  
   const {id} = useParams();
 
-  const clothesFilter = clothes.filter((clothe)=> clothe.id == id)
+  const [product, setProduct] = useState([])
+
+  useEffect(()=> {
+    const db = getFirestore();
+    const clothe = doc(db, "prendas", `${id}`)
+
+    getDoc(clothe).then((res)=> {
+      if(res.exists()) {
+        setProduct(res.data());
+      } else {
+        console.log("no hay producto")
+      }
+    })
+  }, [])
+
+  const clothesFilter = product.filter((product)=> product.id == id)
+  
     //renderizador
   return (
     <>
@@ -22,14 +42,26 @@ function ItemDetail({clothes}) {
             </Card.Text>
             <Card.Text>
               Description:{clothe.description}
-              </Card.Text>     
-              <Card.Text>
-                Price:{clothe.price}
               </Card.Text>
+              <Card.Text>
+                Category: {clothe.category}
+                </Card.Text>     
               <Card.Text>
                 Stock:{clothe.stock}
               </Card.Text>
-            <Button variant="primary">Buy</Button>
+              <Card.Text>
+                Price:{clothe.price}
+              </Card.Text>
+
+              <Card.Footer>
+                <ItemCount 
+                  stock={clothe.stock}
+                  id={clothe.id}
+                  price={clothe.price}
+                  name={clothe.name}
+                />
+              </Card.Footer>
+            
         </Card.Body>
         </Card>
     </div>

@@ -1,42 +1,32 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import {collection, getDocs, getFirestore} from "firebase/firestore"
 import ItemList from "./ItemList"
-import clothes from "../data.json"
 import { useParams } from 'react-router-dom'
 
 function ItemListContainer() {
   const {category} = useParams();
+  const [products, setProducts] = useState([]);
+ 
+
+  useEffect(() => {
+    const db = getFirestore();
+    const clothesCollection= collection(db, "prendas");
+    getDocs(clothesCollection).then((res) => {
+      const clothes = res.docs.map((doc) => ({
+        ...doc.data(),
+        id: doc.id,
+      }));
+      setProducts(clothes);
+    });
+  }, []);
   
 
- /* const getDatos = () => {
-  return new Promise((resolve, reject) => {
-    if(clothes.length === 0) {
-      reject(new error("no hay datos"))
-    } 
-        setTimeout(()=> {
-        resolve(clothes);
-      }, 2000)
-
-    
-
-  })
- }
-
- async function fetchingData () {
-  try{
-    const datosFetched = await getDatos();
-  } catch(err) {
-    console.log(err)
-  }
- }
-
-
- fetchingData(); */
-
- const catFilter = clothes.filter((clothe) => clothe.category === category);
+ const catFilter = products.filter((clothe) => clothe.category === category);
+ 
  
   return (
     <>
-     {category ? <ItemList clothes={catFilter}/> : <ItemList clothes={clothes}/>}
+     {category ? <ItemList clothes={catFilter}/> : <ItemList clothes={products}/>}
 
     </>
   

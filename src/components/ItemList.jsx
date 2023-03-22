@@ -1,14 +1,15 @@
-import React from 'react'
 import Item from "./Item"
 
-function ItemList({clothes}) {
+function ItemList({products}) {
+ 
+ 
   return (
     <>
     
     {
-        clothes.map((clothe)=> (
+        products.map((clothe)=> (
              <Item
-            key={clothe.id}
+            key={clothe.name}
             id={clothe.id}
             name={clothe.name}
             price={clothe.price}

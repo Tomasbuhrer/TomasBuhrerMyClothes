@@ -1,36 +1,25 @@
-import React from 'react'
-import clothes from "../data.json"
 import ItemDetail from "./ItemDetail"
+import {useState, useEffect} from "react"
+import {getFirestore, collection, getDocs} from "firebase/firestore";
 
 
 function ItemDetailContainer() {
-    //logica contenedora quien renderiza 
-    const getData = () =>{
-        return new Promise((resolve,reject)=> {
-            if(clothes.length === 0) {
-                reject(new error("no existen datos"))
-            }
-            setTimeout(()=> {
-                resolve(clothes);
-            }, 2000)
-        })
-    }
-
-    async function DataFetching () {
-        try{
-            const datosfetch = await getData();
-            
-        }catch {
-            console.log(error)
-
-        }
-    }
-
-    DataFetching();
-
+  const [product, setProduct] = useState([]);
+    useEffect(()=> {
+      const db = getFirestore();
+      const clothesCollection = collection(db, "prendas");
+      getDocs(clothesCollection).then((querySnapshot)=> {
+        const clothes = querySnapshot.docs.map((doc)=> ({
+           ...doc.data(),
+           id: doc.id,
+        }));
+        setProduct(clothes);
+      })
+    }, [])
+    
   return (
     <>
-   <ItemDetail clothes={clothes}/>
+   <ItemDetail clothes={product}/>
     </>
   )
 }

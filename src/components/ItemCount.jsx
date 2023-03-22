@@ -1,43 +1,63 @@
-import React, { useState } from 'react'
+import  { useContext, useState, useRef } from 'react'
+import { CartContext } from '../context/ShoppingContext';
+import {TfiPlus, AiOutlineMinus} from "react-icons/all"
 import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
 
-function ItemCount() {
+const ItemCount = ({stock, id, price ,name}) => {
+  
+  const [count, setCount] = useState(0);
+  const [cart,setCart] = useContext(CartContext)
+  console.log(cart)
 
-  const [item, setItem] = useState(0);
-
-  const add = ()=> {
-    setItem(item + 1)
+  const addQty = ()=> {
+    setCount(count + 1)
   }
 
-  const rest = ()=> {
-    setItem(item - 1)
+  const removeQty = ()=> {
+    setCount(count - 1)
   }
-
-  const reset = () => {
-    setItem(0)
+  const addCart = () => {
+    setCart((item) => {
+      const ItemFound = item.find((item) => item.id === id);
+      if(ItemFound) {
+        return item.map((item) => {
+          if(item.id === id) {
+            return {...item, quantity:item.stock + count}
+          } else {
+            return item;
+          }
+        });
+      } else {
+        return [...item, {id, stock: count, price, name}]
+      }
+    })
   }
-
  
 
   return (
     
-    <>  
+    <>
+      <ButtonGroup>
+      {count < 1 ? (
+        <Button fixed="top" variant="primary" size="sm" disabled>
+        <AiOutlineMinus/>
+      </Button>
+      ): (
+        <Button fixed="top" size='sm' onClick={removeQty}><AiOutlineMinus/></Button>
+      )}
+      <label>{count}</label>
+      {count < stock ? (
+        <Button fixed="top" size='sm' onClick={addQty}><TfiPlus/></Button>
+      ): (
+        <Button fixed="top" variant="primary" size="sm" disabled>
+        <TfiPlus/>
+      </Button>
+      
+      )}
 
-        <Card border='secondary' style={{ width: '18rem' }}>
-        <Card.Img variant="top"/>
-        <Card.Body>
-        <Card.Title>Campera De Cuero</Card.Title>
-        <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </Card.Text>
-        <Button variant="primary" onClick={add}>Add</Button>
-        <p>{item}</p>
-        <Button  variant="primary" onClick={rest}>Rest</Button>
-        <Button variant="primary" onClick={reset}>Clear</Button>
-      </Card.Body>
-    </Card>
+      <Button onClick={addCart}> Add to Cart</Button>
+      </ButtonGroup>
     </>
     
     )

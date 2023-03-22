@@ -1,36 +1,42 @@
 import React from 'react'
-import Button from 'react-bootstrap/Button';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
 import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
+import clothe from "../assets/img/deportiva.jpg"
 
 
 
-function Item({id,name, stock, category}) {
+function Item({id, name, stock, category, description, price}) {
 
   return (
     <>
     <div>
         <div key={id}>
-
-            <Card style={{ width: '18rem' }}>
-            <Card.Img variant="top" src="holder.js/100px180" />
-            <Card.Body>
-                <Card.Title>{name}</Card.Title>
-                <Card.Text>
-                Some quick example text to build on the card title and make up the
-                bulk of the card's content.
-                </Card.Text>
+            <Row  className='g-4'>
+              <Col>  
+                 <Card style={{ width: '18rem' }}>
+                    <Card.Img variant="top" src={clothe}/>
+                   <Card.Body>
+                   <Card.Title>{name}</Card.Title>
+                  <Card.Text>{description}</Card.Text>
                   <Card.Text>
                    Stock: {stock}
                   </Card.Text>
+                  <Card.Text>Price: {price}</Card.Text>
                   <Card.Text>
                     Category: {category}
                   </Card.Text>
-                  <Button variant="primary">
-                  <Link to={`/item/${id}`}>Details</Link>
-                  </Button>
-            </Card.Body>
-            </Card>
+                  <Link to={`/item/${id}`}>
+                   <Button variant="primary">
+                     Details
+                   </Button>
+                  </Link>
+              </Card.Body>
+                 </Card>
+              </Col>
+            </Row>
         </div>
     </div>
     

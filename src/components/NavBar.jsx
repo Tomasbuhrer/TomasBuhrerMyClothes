@@ -2,15 +2,15 @@ import Container from 'react-bootstrap/Container';
 import { Link, useParams } from 'react-router-dom';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import CartWidget from './CartWidget';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 
 
 
-import CartWidget from './CartWidget';
-
 
 
 function NavBar() {
+  
 
   return (
     <>
@@ -25,15 +25,18 @@ function NavBar() {
           <Nav className="me-auto">
            <NavDropdown title="categories">
             <NavDropdown.Item>
-              <Link to={`/category/Accesory`}>accesory</Link>
+              <Link to={`/category/Accesory`}>Accesory</Link>
             </NavDropdown.Item>
             <NavDropdown.Item>
-              <Link to={`/category/Use`}>use</Link>
+              <Link to={`/category/Use`}>Use</Link>
             </NavDropdown.Item>
            </NavDropdown>
           </Nav>
+            
         </Navbar.Collapse>
+
         <CartWidget/>
+        
       </Container>
     </Navbar>
     </>
