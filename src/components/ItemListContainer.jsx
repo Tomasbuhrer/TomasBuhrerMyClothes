@@ -15,18 +15,20 @@ function ItemListContainer() {
       const clothes = res.docs.map((doc) => ({
         ...doc.data(),
         id: doc.id,
-      }));
-      setProducts(clothes);
+      }))
+      if(category){
+        setProducts(products.filter((clothe) => clothe.category === category))
+      } else {
+        setProducts(clothes);
+
+      }
     });
   }, []);
-  
-
- const catFilter = products.filter((clothe) => clothe.category === category);
- 
  
   return (
     <>
-     {category ? <ItemList clothes={catFilter}/> : <ItemList clothes={products}/>}
+    
+     {category ? <ItemList clothes={Filter}/> : <ItemList clothes={products}/>}
 
     </>
   
